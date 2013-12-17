@@ -1,0 +1,15 @@
+DROP TABLE IF EXISTS "checks";
+CREATE TABLE "checks" (
+	"id" INTEGER PRIMARY KEY NOT NULL,
+	"time_start" INTEGER NOT NULL,
+	"time_end" INTEGER
+);
+
+DROP TABLE IF EXISTS "hosts";
+CREATE TABLE "hosts" ("id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , "name" VARCHAR NOT NULL , "hint" VARCHAR);
+INSERT INTO "hosts" VALUES(1, '10.0.0.10', 'test');
+
+DROP TABLE IF EXISTS "pings";
+CREATE TABLE pings ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "id_host" INTEGER NOT NULL, "id_check" INTEGER NOT NULL, "time" REAL);
+
+CREATE INDEX "pings_index" ON "pings" ("id" ASC, "id_host" ASC, "id_check" ASC);
